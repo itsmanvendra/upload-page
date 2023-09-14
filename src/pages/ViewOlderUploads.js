@@ -59,17 +59,17 @@ function ViewOlderUploads() {
             </p>
             </div>
         ) : (
-            <div className="flex flex-col justify-center items-center  md:w-3/4 my-4 p-2 relative">
+            <div className="flex flex-col justify-center items-center w-4/5  md:w-3/4 my-4 p-2 relative">
             <p className="font-semibold text-3xl text-white mb-4">
                 Uploaded Files
             </p>
             {olderFiles.map((file) => (
                 <div
                 key={file.name}
-                className="flex justify-center items-center mt-4 bg-red-400 rounded-lg p-2 shadow-lg shadow-gray-700/50 w-full gap-2"
+                className="flex flex-col md:flex-row justify-center items-center mt-4 bg-red-400 rounded-lg p-2 shadow-lg shadow-gray-700/50 w-full gap-2"
                 >
                 <div className="grow">
-                    <p className="md:text-lg md:font-semibold pb-2">{file.name}</p>
+                    <p className="md:text-lg md:font-semibold pb-2 mx-2">{file.name}</p>
                 </div>
                 <div className=" px-2 py-1  flex gap-4">
                     <div
