@@ -8,6 +8,7 @@ import { useSnackbar } from "notistack";
 
 function ViewOlderUploads() {
     const [olderFiles, setOlderFiles] = useState([]);
+    const [loading, setLoading] = useState(true);
     const { enqueueSnackbar } = useSnackbar();
 
     // Download file from storage
@@ -47,12 +48,17 @@ function ViewOlderUploads() {
     useEffect(() => {
         listAll(ref(storage, "files")).then((res) => {
         setOlderFiles(res.items);
+        setLoading(false);
         });
     }, []);
 
     return (
         <div className="flex flex-col justify-center items-center w-full md:w-3/4 mx-auto">
-        {olderFiles.length === 0 ? (
+        {loading ? (
+            <div className="flex flex-col justify-center items-center w-full my-4 p-2">
+            <p className="font-semibold text-3xl text-white mb-4">Loading...</p>
+            </div>
+        ) : olderFiles.length === 0 ? (
             <div className="flex flex-col justify-center items-center w-full my-4 p-2">
             <p className="ont-semibold text-3xl text-white mb-4">
                 No files uploaded
@@ -69,7 +75,9 @@ function ViewOlderUploads() {
                 className="flex flex-col md:flex-row justify-center items-center mt-4 bg-red-400 rounded-lg p-2 shadow-lg shadow-gray-700/50 w-full gap-2"
                 >
                 <div className="grow">
-                    <p className="md:text-lg md:font-semibold pb-2 mx-2">{file.name}</p>
+                    <p className="md:text-lg md:font-semibold pb-2 mx-2">
+                    {file.name}
+                    </p>
                 </div>
                 <div className=" px-2 py-1  flex gap-4">
                     <div

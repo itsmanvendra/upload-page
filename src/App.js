@@ -1,7 +1,7 @@
 import React from "react";
-import FileUpload from "./pages/FileUpload";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import ViewOlderUploads from "./pages/ViewOlderUploads";
+import FileUpload from "./pages/FileUpload";
 import {SnackbarProvider} from "notistack";
 
 
